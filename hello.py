@@ -150,15 +150,19 @@ def filemanagement():
             session['scrap'] = True
             print "dfsgd"
             os.getcwd()
-            os.chdir("tutorial")
-            os.getcwd()
+
+            os.chdir("/home/ankit/flask_app/tutorial")
+            #os.getcwd()
             print "dfgde"
             call(["ls","-l"])
-            call(["scrapy","crawl","quotes"])
-            os.chdir("../")
+            os.chdir("/home/ankit/flask_app/tutorial")
             call(["ls","-l"])
+            call(["scrapy","crawl","quotes"])
+            os.chdir("/home/ankit/flask_app/tutorial")
+            call(["ls","-l"])
+            return render_template('filemanagement.html')
         elif 'download' in request.form:
-            txt_again = open("tutorial/quotes-1.html")
+            txt_again = open("/home/ankit/flask_app/tutorial/quotes-1.html")
             file_data = txt_again.read()
             print file_data
             response = make_response(file_data)
@@ -168,11 +172,12 @@ def filemanagement():
             return response
         else:
             print "dsfhg"
-            os.getcwd()
-            call(["ls","-l"])
-            os.chdir("tutorial")
-            os.getcwd()
+            #os.getcwd()
+            #call(["ls","-l"])
+            #os.chdir("tutorial")
+            print os.getcwd()
             print "dfgde"
+            os.chdir("/home/ankit/flask_app/tutorial")
             call(["ls","-l"])
             call(["rm","quotes-1.html"])
             call(["rm","quotes-2.html"])

@@ -1,0 +1,19 @@
+{% include "header.html" %}
+{% block body %}
+{% if session['username'] %}
+{% if stu %}
+<div style="width:98%;border:1px solid;margin:0px auto">
+<table class="table" >
+<thead><tr><th>Product Name</th><th>Product Status</th><th>Product price</th><th>Product Url</th></tr></thead>
+<tbody>
+{% for entry in stu %}
+<tr>
+<td>{{ entry.productname }}</td><td>{{ entry.productstatus }}</td><td>{{ entry.costprice }}</td><td><a href="{{ entry.producturl }}" target="_blank" style="text-decoration:none">url</a></td>
+</tr>
+{% endfor %}
+</tbody></table></div>
+{% endif %}
+{% else %}
+<h1>please login</h1>
+{% endif %}
+{% endblock %}

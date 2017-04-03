@@ -1,0 +1,35 @@
+<!doctype html>
+<title>Flask</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="static/jquery.min.js"></script>
+<script src="static/bootstrap.min.js"></script>
+<div id="navbar" class="navbar-collapse collapse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+{% if session['username'] %}
+<ul class="nav navbar-nav">
+<li><a href="{{ url_for('createorder') }}">Create Order</a></li>
+<li><a href="{{ url_for('logout') }}">logout</a></li>
+<li><a href="{{ url_for('filemanagement') }}">filemanagement</a></li>
+</ul>
+</br>
+<ul class="nav navbar-nav">
+<form action="{{ url_for('index') }}" method=post>
+<select name="option" class="btn btn-default">
+        <option value="Active">active</option>
+        <option value="Cancelled">cancelled</option>
+</select>
+<input type=submit class="btn btn-default" value=sort>
+</form>
+</ul>
+{% else %}
+<ul class="nav navbar-nav">
+<li><a href="{{ url_for('loginpage') }}">log in</a></li>
+<li><a href="{{ url_for('registerpage') }}">register</a></li>
+</ul>
+{% endif %}
+</nav></div>
+</br>
+</br>
+</br>
+<div>{% block body %}{% endblock %}</div>

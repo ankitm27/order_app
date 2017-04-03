@@ -1,0 +1,27 @@
+<!doctype html>
+<title>Flask</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="static/jquery.min.js"></script>
+<script src="static/bootstrap.min.js"></script>
+
+</br>
+<form action="{{ url_for('filemanagement') }}" method=post>
+      <input type=submit class="btn btn-info" value=scrap name="scrap">
+</form>
+
+</br></br>
+{% if session['scrap'] %}
+<form action="{{ url_for('filemanagement') }}" method=post>
+      <input type=submit  class="btn btn-warning" value=Download name="download">
+</form>
+</br></br>
+<form action="{{ url_for('filemanagement') }}" method=post>
+      <dd><input type=submit class="btn btn-danger" value=delete name="delete">
+    </dl>
+</form>
+{% endif %}
+</br>
+<ul class="nav navbar-nav">
+<li><a href="{{ url_for('index') }}">index</a></li>
+<ul>

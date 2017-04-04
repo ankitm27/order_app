@@ -4,28 +4,29 @@
 <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
 <script src="static/jquery.min.js"></script>
 <script src="static/bootstrap.min.js"></script>
-
-<h2>Register page</h2>
 {% if error %}
 <div class="alert alert-warning">
 <p class=error><strong>Error:</strong> {{ error }}
 </div>
 {% endif %}
+<div class="container">
+<h1>Register Page</h1>
 <form action="{{ url_for('registerpage') }}" method=post>
   <div class="form-group">
-  <label for="username">username</label>
+  <label for="username">Username:</label>
   <input type="text" class="form-control" name="username">
   </div>
   <div class="form-group">
-  <label for="passowrd">password</label>
+  <label for="passowrd">Password:</label>
   <input type="password" class="form-control" name="password">
   </div>
   <div class="form-group">
-  <label for="confirmPassword">ConfirmPassword</label>
-  <input type="text" class="form-control" name="confirmPassword">
+  <label for="confirmPassword">Confirm Password:</label>
+  <input type="password" class="form-control" name="confirmPassword">
   </div>
   <input type=submit class="btn btn-success" value=SignUp>
 </form>
 <ul class="nav navbar-nav">
 <li><a href="{{ url_for('index') }}">log in</a></li>
 </ul>
+</div>

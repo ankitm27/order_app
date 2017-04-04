@@ -7,6 +7,8 @@ import os
 import subprocess
 #from flask.ext.session import Session
 app = Flask(__name__)
+#app = Flask(__name__, static_url_path = "", static_folder = "tmp")
+#app = Flask(__name__, static_url_path = "/static", static_folder = "static")
 #app.secret_key = 'super_secret_key'
 #app.config['SECRET_KEY'] = 'oh_so_secret'
 #app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
@@ -80,6 +82,8 @@ def createorder():
         print orderstatus
         print producturl
         print costprice
+        if not len(productid) and not len(productname) and not len(orderstatus) and not len(producturl) and not len(costprice):
+            return render_template('createorder.html',error="please fill all the entries")
         order = ordersdb(productid,productname,orderstatus,producturl,costprice)
         db.session.add(order)
         db.session.commit()
@@ -162,7 +166,7 @@ def filemanagement():
             call(["ls","-l"])
             return render_template('filemanagement.html')
         elif 'download' in request.form:
-            txt_again = open("/home/ankit/flask_app/tutorial/quotes-1.html")
+            txt_again = open("/home/ankit/flask_app/tutorial/data.csv")
             file_data = txt_again.read()
             print file_data
             response = make_response(file_data)
@@ -179,8 +183,8 @@ def filemanagement():
             print "dfgde"
             os.chdir("/home/ankit/flask_app/tutorial")
             call(["ls","-l"])
-            call(["rm","quotes-1.html"])
-            call(["rm","quotes-2.html"])
+            #call(["rm","quotes-1.html"])
+            call(["rm","data.csv"])
             call(["ls","-l"])
             session.pop('scrap', None)
             return render_template('filemanagement.html')

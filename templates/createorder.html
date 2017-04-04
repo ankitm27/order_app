@@ -4,31 +4,35 @@
 <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
 <script src="static/jquery.min.js"></script>
 <script src="static/bootstrap.min.js"></script>
-<h2>Create Order</h2>
 {% if error %}
+<div class="container">
+</br>
 <div class="alert alert-warning">
 <p class=error><strong>Error:</strong> {{ error }}
 </div>
+</div>
 {% endif %}
+<div class="container">
+<h1>Create Order</h1>
 <form action="{{ url_for('createorder') }}" method=post>
       <div class="form-group">
       <label for="productid">ProductId:</label>
       <input type="text" class="form-control" name="productid">
       </div>
       <div class="form-group">
-      <label for="productname">Productname:</label>
+      <label for="productname">ProductName:</label>
       <input type="text" class="form-control" name="productname">
       </div>
       <div class="form-group">
-      <label for="orderstatus">orderstatus:</label>
+      <label for="orderstatus">OrderStatus:</label>
       <input type="text" class="form-control" name="orderstatus">
       </div>
       <div class="form-group">
-      <label for="producturl">Producturl:</label>
+      <label for="producturl">ProductUrl:</label>
       <input type="text" class="form-control" name="producturl">
       </div>
       <div class="form-group">
-      <label for="costprice">costprice:</label>
+      <label for="costprice">CostPrice:</label>
       <input type="text" class="form-control" name="costprice">
     </div>
       <input type=submit class="btn btn-success" value=createOrder>
@@ -36,3 +40,4 @@
 <ul class="nav navbar-nav">
 <li><a href="{{ url_for('index') }}">index</a></li>
 <ul>
+</div>
